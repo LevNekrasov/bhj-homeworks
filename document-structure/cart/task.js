@@ -13,7 +13,7 @@ product.forEach((link) => {
     })
 
     minusProduct[id].addEventListener('click', () => {
-        if(quantityOfGoods[id].innerHTML <= 0){
+        if(quantityOfGoods[id].innerHTML <= 1){
             return;
         } else {
             quantityOfGoods[id].innerHTML--;
@@ -25,24 +25,21 @@ product.forEach((link) => {
         let cartProduct = document.createElement('div');
         let cartImage = productImg[id].cloneNode(false);
         let cartQuantityOfGoods = document.createElement('div');
-        let a = document.querySelectorAll('.cart__product');
-        
+        let cart = document.querySelectorAll('.cart__product');
+
         cartProduct.classList.add('cart__product');
         cartProduct.dataset.id = link.dataset.id;
-        cartProducts.insertAdjacentElement('beforeend', cartProduct);
-        cartProduct.insertAdjacentElement('afterbegin', cartImage)
         cartImage.classList.replace('product__image', 'cart__product-image');
         cartQuantityOfGoods.classList.add('cart__product-count');
         cartQuantityOfGoods.innerHTML = quantityOfGoods[id].innerHTML;
-        cartProduct.insertAdjacentElement('beforeend', cartQuantityOfGoods)
+        let productInCard = Array.from(cart).find(el => el.dataset.id === cartProduct.dataset.id);
         
-        if(a.length >= 1){
-            a.forEach((el) => {
-                if(el.dataset.id == cartProduct.dataset.id){
-                    el.lastChild.innerHTML = Number(el.lastChild.innerHTML) + Number(cartQuantityOfGoods.innerHTML)
-                    cartProduct.remove();
-                }
-            })
+        if(productInCard){
+            productInCard.lastChild.innerHTML = Number(productInCard.lastChild.innerHTML) + Number(cartQuantityOfGoods.innerHTML);
+        } else {
+            cartProducts.insertAdjacentElement('beforeend', cartProduct);
+            cartProduct.insertAdjacentElement('afterbegin', cartImage)
+            cartProduct.insertAdjacentElement('beforeend', cartQuantityOfGoods);
         }
     })
 })

@@ -10,8 +10,8 @@ button.addEventListener('click', (event) => {
     task.insertAdjacentElement('beforeend', taskTitle);
     document.querySelector('.tasks__list').insertAdjacentElement('afterbegin', task);
     task.insertAdjacentElement('beforeend', remove)
-    tasksInput.value = '';
     taskTitle.innerHTML = tasksInput.value;
+    tasksInput.value = '';
     taskTitle.classList.add('task__title');
     remove.classList.add('task__remove');
     remove.innerHTML = '&times;';

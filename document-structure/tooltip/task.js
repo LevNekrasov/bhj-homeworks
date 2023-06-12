@@ -8,11 +8,8 @@ tooltip.forEach((link) => {
         
     link.addEventListener('click', (event) => {
         event.preventDefault();
-        el.classList.add('tooltip_active');
-        el.style.left = event.clientX + 'px';
-        el.style.top = event.clientY + 'px';
-        link.onmouseleave = () => {
-            el.classList.remove('tooltip_active');
-        }
+        el.classList.toggle('tooltip_active');
+        el.style.left = `${event.clientX}px`;
+        el.style.top = `${event.clientY}px`;
     })
 })
