@@ -12,6 +12,7 @@ xhr.onload = () => {
         alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
     } else {
         let valute = xhr.response.response.Valute;
+        console.log(xhr.response)
 
         for (var el in valute){
             let valuteName = valute[el].CharCode;
