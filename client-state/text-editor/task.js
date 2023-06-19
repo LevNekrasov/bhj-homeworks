@@ -1,4 +1,4 @@
-let textarea = document.getElementById('editor');
+const textarea = document.getElementById('editor');
 
 textarea.textContent = localStorage.text
 
